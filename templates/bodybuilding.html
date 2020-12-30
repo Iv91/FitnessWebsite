@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<br><br><br>
+<div class="row">
+{% for exercise in BodyBuildingExercise%}
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{ exercise.image.url }}" height="300px" width="250px" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ exercise.name }}</h5>
+    <a href="{{ exercise.get_absolute_url }}" class="btn btn-primary">See content</a>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% else %} <br> <br> <br>
+You need to log in to see this page
+{% endif %}
+{% endblock content %}
